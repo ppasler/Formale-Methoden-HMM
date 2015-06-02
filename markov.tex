@@ -372,7 +372,7 @@
 \author{Paul Pasler, Reutlingen University}
 
 % The paper headers
-\markboth{Formale Methoden: Hidden Markov Kette}%
+\markboth{Formale Methoden: Hidden Markov Model}%
 {Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Computer Society Journals}
 
 
@@ -383,7 +383,7 @@ Es geht um versteckte Ketten.
 
 % Note that keywords are not normally used for peerreview papers.
 \begin{IEEEkeywords}
-Machine Learning, Markov Kette.
+Machine Learning, Hidden Markov Model, Markov Kette.
 \end{IEEEkeywords}}
 
 
@@ -408,11 +408,10 @@ Notwendige mathematische Grundlagen
   %%%%%%%%%%%%%%%%%%  
 \section{Markov Kette} \label{sec:mk}
 Grundlage des Hidden Markov Model war die vom russischen Mathematiker Andrej Andrejewitsch Markov 
-(1856 - 1922, siehe \cite{markov1913}) entwickelte Markov Kette. Zu Beginn des
-20. Jahrhunderts beschäftigte er sich als erster mit einer statistischen Beschreibung von Zustands- und Symbolfolgen. 
-Er führte eine statistische Analyse der Buchstabenfolge des Textes ``Eugen Onegin'' von Alexander 
+(1856 - 1922, siehe \cite{markov1913}) entwickelte Markov Kette. Zu Beginn des 20. Jahrhunderts beschäftigte er sich als erster mit einer statistischen Beschreibung von Zustands- und Symbolfolgen. Er führte eine statistische Analyse der Buchstabenfolge des Textes ``Eugene Onegin'' von Alexander 
 Pushkin durch.
 
+\subsection{Definition}
 Eine Markov Kette beschreibt einen zeit-diskreten Prozess \((X_t)_{t\in\mathbb{N}_0}\) mit  \(m\) abzählbaren Zuständen \(S\) \cite{stochMod}.
 Weiterhin wird sie als stationär bezeichnet, wenn alle Wahrscheinlichkeiten unabhängig von der Zeit sind.
 Da die Verteilung der Zufallsvariablen nur von den vergangenen Zuständen abhängt, gilt eine Markov Kette als kausal \cite[48]{mmmFink}.
@@ -448,7 +447,7 @@ Die Wahrscheinlichkeit für \( k \)-Schritte lässt sich so ausrechnen:
 \[ X_k = X_{k-1} A = X_0 A^k \] 
 
 
-\textbf{Beispiel:} 
+\subsection{Beispiel} 
 \textit{ Markov Kette für das Wetter \footnote{Quelle: \url{en.wikipedia.org/wiki/Examples_of_Markov_chains}}} \\
 Im folgenden Beispiel soll aufgrund des aktuellen Wetters auf das Wetter der folgenden Tage geschlossen werden.
 Das Wetter kann entweder ``sunny'' oder ``rainy'' sein, zu Beginn (Tag 0, \( t = 0 \)) des Experiments ist es ``sunny''.
@@ -475,53 +474,22 @@ Für Tag 2:\\
 Verallgemeinert für Tag k bedeutet das: 
 \[ X_k = X_{k-1} A = X_0 A^k = [ 1, 0 ] \begin {bmatrix} 0.9&0.1\\0.5&0.5 \end {bmatrix}^k \] 
 
-
-\section{Hidden Markov Model}
-\label{mainsec:hmm}
-
-Das Hidden Markov Model ist ein stochastisches Modell für sequentielle Daten und wird vor allem in der Spracherkennung und in der Bioinformatik eingesetzt.
-
-In den folgenden beiden Abschnitten werden die Entstehung und Konzepte der MK und des HMM aufgezeigt. Im letzten Abschnitt werden die Ergebnisse 
-evaluiert und ein Fazit mit Ausblick gezogen.  
- 
-
-
   %%%%%%%%%%%%%%%%%%
   %  HIDDEN-MARKOV  % 
   %%%%%%%%%%%%%%%%%%
-\subsection{Hidden Markov Model und Gaussian Mixture Model}  \label{sec:hmm}
+\section{Hidden Markov Model}
+\label{mainsec:hmm}
+
+Das Hidden Markov Model ist ein stochastisches Modell für sequentielle Daten und wird vor allem in der Spracherkennung und in der Bioinformatik eingesetzt. 
 Der amerikanischen Mathematiker Leonard E. Baum (* 1931) und andere Autoren entwickelten auf Basis der Markov Kette Ende der 
-sechziger Jahre das Hidden Markov Model. Erste Hidden Markov Model-Applikationen wurden zur Spracherkennung und später auch in der Bioinformatik 
-zur Analyse von Nukleotid- und Proteinsequenzen eingesetzt. 
+sechziger Jahre das Hidden Markov Model \cite{baum66}. Erste Hidden Markov Model-Applikationen wurden zur Spracherkennung und später auch in der Bioinformatik zur Analyse von Nukleotid- und Proteinsequenzen eingesetzt. 
 
-Ein Hidden Markov Model erweitert eine Markov Kette um eine weiteren Zufallsprozess und ist somit ein zweistufiger stochastischer Prozess \cite[67]{mmmFink}. Hierfür wird
-jedem Zustand der Markov Kette eine Ausgabe bzw. Emission zugeordnet dessen
-Wahrscheinlichkeitsverteilung einzig vom aktuellen Zustand abhängig ist. Die
-Emissionen sind die einzigen beobachtbaren Zustände des Hidden Markov Model. Der Rest
-ist sozusagen 'versteckt' woher sich auch der Name des Models ableitet. Eine
-Folge von Emissionen wird auch Observationsfolge genannt.
-
-\subsection{Beispiel}
-\begin{figure}[htbp] \centering
-    \includegraphics[width=0.4\textwidth]{markov/hmm_example.png}
-    \caption{Hidden Markov Model für das Beipiel des gefangen im Verlies}
-    \label{fig:hmm_example}
-\end{figure}
-
-Abbildung \ref{fig:hmm_example} soll ein Hidden Markov Model an dem Beispiel des
-Gefangenen im Verlies darstellen\footnote{Quelle:
-\url{http://de.wikipedia.org/wiki/Hidden_Markov_Model}}. Ein Gefangener im
-Kerkerverlies möchte das aktuelle Wetter herausfinden. Er weiß, dass auf einen
-sonnigen Tag zu 70 \% ein Regentag folgt und dass auf einen Regentag zu 50 \%
-ein Sonnentag folgt. Weiß er zusätzlich, dass die Schuhe der Wärter bei Regen zu
-90 \% dreckig, bei sonnigem Wetter aber nur zu 60 \% dreckig sind, so kann er
-durch Beobachtung der Wärterschuhe Rückschlüsse über das Wetter ziehen (das
-heißt, er kann die Wahrscheinlichkeit für Regenwetter gegenüber sonnigem Wetter
-abschätzen). Sonne und Regen sind in diesem Fall die versteckten Zustände. Die
-Emissionen bzw. die Observation die der Gefangene machen kann sind nur der
-Verschmutzungsgrad der Schuhe der Wärter.
 
 \subsection{Definition}
+Ein Hidden Markov Model erweitert eine Markov Kette um eine weiteren Zufallsprozess und ist somit ein zweistufiger stochastischer Prozess \cite[67]{mmmFink}. Hierfür wird
+jedem Zustand der Markov Kette eine Ausgabe bzw. Emission zugeordnet dessen Wahrscheinlichkeitsverteilung einzig vom aktuellen Zustand abhängig ist. Die Emissionen sind die einzigen beobachtbaren Zustände des Hidden Markov Model. Der Rest ist sozusagen 'versteckt' woher sich auch der Name des Models ableitet. Eine Folge von Emissionen wird auch Observationsfolge genannt.
+
+
 Das Hidden Markov Model wird definiert durch \cite[68]{mmmFink}:\\ 
 \( \lambda = (S;V;A;B;\pi)\)
 \begin{itemize}
@@ -538,37 +506,32 @@ Das Hidden Markov Model wird definiert durch \cite[68]{mmmFink}:\\
            \( \pi = \{ \pi_i | \pi_i = P(S_1 = i) \} \) 
 \end{itemize}
 
-Die Emissionsmodellierung ist hierbei vom Kontext der Problemstellung abhängig.
-Wird das Hidden Markov Model zum Beispiel bei der Analyse von biologischen Sequenzen,
-sprich einem diskreten Symbolinventar, angewendet, wird ein diskretes
-Emissionsmodel genutzt. Man spricht hierbei auch von einem diskreten Hidden Markov Model.
-Wenn dieses Model zur verarbeitung von Signalen verwendet werden soll erfordert
-dies in der Vorverarbeitung der Daten einen Quantisierer der die
-kontinuerlichen Merkmale in eine diskrete Observationsfolge überführt. 
+Die Emissionsmodellierung ist hierbei vom Kontext der Problemstellung abhängig. Wird das Hidden Markov Model zum Beispiel bei der Analyse von biologischen Sequenzen, sprich einem diskreten Symbolinventar, angewendet, wird ein diskretes  Emissionsmodel genutzt. Man spricht hierbei auch von einem diskreten Hidden Markov Model. Wenn dieses Model zur verarbeitung von Signalen verwendet werden soll erfordert dies in der Vorverarbeitung der Daten einen Quantisierer der die  kontinuerlichen Merkmale in eine diskrete Observationsfolge überführt. 
 
-Gängiger ist es hierfür kontinuierliche Hidden Markov Model's zu nutzen. Hierbei wird eine
-Emissionsmodelierung auf Basis kontinuierlicher Dichtefunktionen genutzt die
-kontinuierliche Observationen im \(\mathbb{R}^n\) verarbeitet.\\ 
+Gängiger ist es hierfür kontinuierliche Hidden Markov Model's zu nutzen. Hierbei wird eine Emissionsmodelierung auf Basis kontinuierlicher Dichtefunktionen genutzt die kontinuierliche Observationen im \(\mathbb{R}^n\) verarbeitet.\\ 
 \( B =\{ b_{j}(x) | b_{j}(x) = p(x|S_t = j) \} \)\\
-Zur behandlung kontinuerlicher Verteilungen mit mehreren komplexen
-Häufigkeitsgebieten werden approximatische Verfahren genutzt. Die verbreiteste
-Technik besteht aus der Verwendung von Mischverteilungen auf der Basis von
-Gauß-Dichten (Gaussian Mixture Model). Man kann nämlich zeigen, dass sich jede allgemeine
-kontinuierliche Verteilung \(p(x)\) durch eine Linearkombination von i.a. unendlich vielen
-Basis-Normalverteilungen beliebig genau approximieren lässt\cite[69]{mmmFink}:
+Zur behandlung kontinuerlicher Verteilungen mit mehreren komplexen Häufigkeitsgebieten werden approximatische Verfahren genutzt. Die verbreiteste Technik besteht aus der Verwendung von Mischverteilungen auf der Basis von Gauß-Dichten (Gaussian Mixture Model). Man kann nämlich zeigen, dass sich jede allgemeine kontinuierliche Verteilung \(p(x)\) durch eine Linearkombination von i.a. unendlich vielen Basis-Normalverteilungen beliebig genau approximieren lässt\cite[69]{mmmFink}:
  
 \begin{multline}
 p(x) \hat{=} \sum_{k=1}^\infty c_{k} N(x|\mu_{k},K_{k})\\
 \approx \sum_{k=1}^M c_{k} N(x|\mu_{k},K_{k})  
 \end{multline}
-Der Approximationsgfehler lässt sich hierbei über eine geeignete Anzahl von
-\(M\) Basisverteilungen klein halten. Somit ergibt sich für die Beschreibung der
-Emissionsverteilung eines Zustands des Hidden Markov Model folgende Formel:
+Der Approximationsgfehler lässt sich hierbei über eine geeignete Anzahl von \(M\) Basisverteilungen klein halten. Somit ergibt sich für die Beschreibung der Emissionsverteilung eines Zustands des Hidden Markov Model folgende Formel:
 \begin{equation}
 b_{j}(x) = \sum_{k=1}^M c_{jk}g_{jk}(x)
 \end{equation}
-Die Anzahl der Basisverteilungen eines Gaussian Mixture Model kann hierbei für die einzelnen
-Zustände des HMM variieren.\\
+Die Anzahl der Basisverteilungen eines Gaussian Mixture Model kann hierbei für die einzelnen Zustände des HMM variieren.\\
+
+
+\subsection{Beispiel}
+\begin{figure}[htbp] \centering
+    \includegraphics[width=0.4\textwidth]{markov/hmm_example.png}
+    \caption{Hidden Markov Model für das Beipiel des Gefangen im Verlies}
+    \label{fig:hmm_example}
+\end{figure}
+
+Abbildung \ref{fig:hmm_example} soll ein Hidden Markov Model an dem Beispiel des Gefangenen im Verlies  darstellen\footnote{Quelle: \url{http://de.wikipedia.org/wiki/Hidden_Markov_Model}}. Ein Gefangener im Kerkerverlies möchte das aktuelle Wetter herausfinden. Er weiß, dass auf einen sonnigen Tag zu 70 \% ein Regentag folgt und dass auf einen Regentag zu 50 \% ein Sonnentag folgt. Weiß er zusätzlich, dass die Schuhe der Wärter bei Regen zu 90 \% dreckig, bei sonnigem Wetter aber nur zu 60 \% dreckig sind, so kann er durch Beobachtung der Wärterschuhe Rückschlüsse über das Wetter ziehen (das heißt, er kann die Wahrscheinlichkeit für Regenwetter gegenüber sonnigem Wetter abschätzen). Sonne und Regen sind in diesem Fall die versteckten Zustände. Die  Emissionen bzw. die Observation die der Gefangene machen kann sind nur der Verschmutzungsgrad der Schuhe der Wärter.
+
 
 \subsection{Funktionsweise}
 Das Konzept des Hidden Markov Model kann laut \cite{rabiner} in drei Problemstellungen eingeteilt werden:
@@ -647,19 +610,9 @@ optimalen Vorgängerzustand speichert.\\
 Je nach Problemstellung müssen unterschiedliche Modelle eines HMM's gewählt
 werden. Es ist bisher kein Verfahren bekannt das aufgrund einer Stichprobe ein
 Optimales Modell generieren kann. Die Anzahl der Zustände, die Wahl der
-Emissionsverteilungen sowie deren initialer Parameterwerte müssen nach
-eigenen Erfahrungen gewählt werden. Wenn dies geschehen ist kann das Modell in
-einem iterativen Prozess trainiert werden. Hierbei werden die Parameter
-einer Wachstumstransformation unterworfen. Ziel ist es das die Modellparameter
-so verändert werden das die Bewertung des veränderten Models besser als die des Ausgangsmodels ist.\\
+Emissionsverteilungen sowie deren initialer Parameterwerte müssen nach eigenen Erfahrungen gewählt werden. Wenn dies geschehen ist kann das Modell in einem iterativen Prozess trainiert werden. Hierbei werden die Parameter einer Wachstumstransformation unterworfen. Ziel ist es das die Modellparameter so verändert werden das die Bewertung des veränderten Models besser als die des Ausgangsmodels ist.\\
 
-Zum trainieren eines Hidden Markov Model existieren diverse Algorithmen. Sie unterscheiden
-sich im wesentlichen durch die Verwendeten Qualitätsmaße zur Bewertung der
-Modelierungsgüte. Beim Baum-Welch-Algorithmus \cite{rabiner} wird die
-Produktionswahrscheinlichkeit \(P(O|\lambda)\) zur Bewertung genutzt. Beim
-Viterbi-Algorithmus \cite{Viterbi} und dem eng verwandten Segmental-k-means
-Algorithmus \cite{juang} nur die Wahrscheinlichkeit \((P(O,s^{*}|\lambda)\) der
-jeweils optimalen Zustandsfolge betrachtet \cite{mmmfink}.
+Zum trainieren eines Hidden Markov Model existieren diverse Algorithmen. Sie unterscheiden sich im wesentlichen durch die Verwendeten Qualitätsmaße zur Bewertung der Modelierungsgüte. Beim Baum-Welch-Algorithmus \cite{rabiner} wird die Produktionswahrscheinlichkeit \(P(O|\lambda)\) zur Bewertung genutzt. Beim Viterbi-Algorithmus \cite{viterbi} und dem eng verwandten Segmental-k-means Algorithmus \cite{juang} nur die Wahrscheinlichkeit \((P(O,s^{*}|\lambda)\) der jeweils optimalen Zustandsfolge betrachtet \cite{mmmFink}.
 
 
 
@@ -672,7 +625,7 @@ jeweils optimalen Zustandsfolge betrachtet \cite{mmmfink}.
 Wie schlägt sich ein HMM in der Praxis
 
 \subsection{Vergleich mit anderen Machine Learning Ansätzen}
-Wie arbeiten Neuronale Netze, SVM, k-Means & Co. im Vergleich?
+Wie arbeiten Neuronale Netze, SVM, k-Means und Co. im Vergleich?
 
 
 % if have a single appendix:
@@ -724,22 +677,23 @@ Wie arbeiten Neuronale Netze, SVM, k-Means & Co. im Vergleich?
 
 \bibitem[Mar13]{markov1913}
 A.A. Markov.
-\newblock Example of a statistical investigation of the text of eugene onegin illustrating the dependence between samples in chain. ein beispiel
-  statistischer forschung am text eugen onegin zur verbindung von proben in
-  ketten. eine vorlesung vor der physikalischmathematischen fakultät der
-  königlichen akademie der wissenschaften st. petersburg, 23. januar 1913.
-  Übersetzt von alexander y. nitussov, lioudmila voropai und david link, 1913.
+\newblock {\em Example of a statistical investigation of the text of ``Eugene Onegin'' illustrating the dependence between samples in chain}.
+\newblock translated by alexander y. nitussov, lioudmila voropai and david link, 1913.
+
+\bibitem[Bau66]{baum66}
+Baum, L. E. and Petrie, T. 
+\newblock {\em Statistical Inference for Probabilistic Functions of Finite State Markov Chains}. 
+\newblock The Annals of Mathematical Statistics 37 (6): 1554–1563. 1966
+
+\bibitem[Rab89]{rabiner}
+Lawrence~R. Rabiner.
+\newblock {\em A tutorial on hidden markov models and selected applications in speech recognition.}
+\newblock In {\em Proceedings of the IEEE}, pages 257--286, 1989.
 
 \bibitem[Mar09]{Marsland}
 Stephen Marsland.
 \newblock {\em Machine Learning - An Algorithmic Perspective.}
 \newblock Chapman I\& Hall, 2009.
-
-\bibitem[Rab89]{rabiner}
-Lawrence~R. Rabiner.
-\newblock A tutorial on hidden markov models and selected applications in
-  speech recognition.
-\newblock In {\em Proceedings of the IEEE}, pages 257--286, 1989.
 
 \bibitem[KHW13]{stochMod}
 U.M.~Stocker K.-H.~Waldmann.
@@ -751,51 +705,19 @@ Gernot~A. Fink.
 \newblock {\em Mustererkennung mit Markov-Modellen}.
 \newblock B. G. Teubner Verlag, 2003.
 
+\bibitem[Vit67]{viterbi}
+A. Viterbi
+\newblock {\em Error Bounds for Convolutional Codes and an Asymptotically Optimum Decoding Algorithm}.
+\newblock IEEE Trans. Inf. Theor, 1967.
+
+
+\bibitem[Jua90]{juang}
+Juang, B. H. and Rabiner, L. R.
+\newblock {\em The segmental K-means algorithm for estimating parameters of hidden Markov models}.
+\newblock Acoustics, Speech and Signal Processing, IEEE Transactions on 1990.
+
 \end{thebibliography}
 
-% biography section
-% 
-% If you have an EPS/PDF photo (graphicx package needed) extra braces are
-% needed around the contents of the optional argument to biography to prevent
-% the LaTeX parser from getting confused when it sees the complicated
-% \includegraphics command within an optional argument. (You could create
-% your own custom macro containing the \includegraphics command to make things
-% simpler here.)
-%\begin{biography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
-% or if you just want to reserve a space for a photo:
-
-\begin{IEEEbiography}{Michael Shell}
-Biography text here.
-\end{IEEEbiography}
-
-% if you will not have a photo at all:
-\begin{IEEEbiographynophoto}{John Doe}
-Biography text here.
-\end{IEEEbiographynophoto}
-
-% insert where needed to balance the two columns on the last page with
-% biographies
-%\newpage
-
-\begin{IEEEbiographynophoto}{Jane Doe}
-Biography text here.
-\end{IEEEbiographynophoto}
-
-% You can push biographies down or up by placing
-% a \vfill before or after them. The appropriate
-% use of \vfill depends on what kind of text is
-% on the last page and whether or not the columns
-% are being equalized.
-
-%\vfill
-
-% Can be used to pull up biographies so that the bottom of the last one
-% is flush with the other column.
-%\enlargethispage{-5in}
-
-
-
-% that's all folks
 \end{document}
 
 
