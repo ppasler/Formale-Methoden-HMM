@@ -396,9 +396,65 @@ Machine Learning, Hidden Markov Model, Markov Kette.
 
 \section{Einführung}
 \label{mainsec:intro}
-\IEEEPARstart{H}{ier} beginnt der Spaß!
+\IEEEPARstart{D}{as} Hidden Markov Model hat im Bereich des machinellen Lernens viele Anwendungsfälle. In der vorgelegten Arbeit wird die Funktionsweise des Hidden Markov Model erklärt werden (Kapitel \ref{mainsec:hmm}). Die dafür notwendigen Grundlagen werden in den nachfolgenden Abschnitten und im Kapitel \ref{mainsec:mk} beleuchtet.
+Kapitel \ref{mainsec:result} befasst sich mit einer Einschätzung des Hidden Markov Models und dem Vergleich mit anderen Ansätzen im Machine Learning Kontext.
+
 \subsection{Machine Learning}
-Was ist eigentlich Machine Learning?
+Machine Learning befasst sich mit der modellierung des Lernvorgangs auf einem Computer \cite{marsland}. Es wird versucht ein ``künstliche'' Generierung von Wissen aus Erfahrung zu erzeugen.
+Dabei wird anhand von Beispielen ``gelernt'', sodass nicht nur die selben Daten wieder erkannt werden können, sondern auch ähnliche bzw. unbekannte Daten klassifiziert werden. Diese Transferleistung nennt man Generalisierung und ist auch beim Menschen eine wichtige Eigenschaft im Lernvorgang.
+
+So können wir Äpfel von Birnen (Siehe Abbildung \ref{fig:apfelbirne} \footnote{Quelle: \url{http://www.lifeline.de/img/abnehmen/origs76797/7656955923-w830-h830/Birne-und-Apfel.jpg}}) unterscheiden, egal, ob wir genau diese Frucht schon einmal gesehen haben. Wir entscheiden anhand gelernter Merkmale, um welche Frucht es sich vermutlich handelt. Merkmale sind bspw. Größe, Form, Farbe, Geruch etc.
+
+\begin{figure}[htbp] \centering
+    \includegraphics[width=0.25\textwidth]{markov/birneapfel}
+    \caption{ Birne und Apfel unterscheiden sich durch Farbe, Form etc. - einen Stiel haben jedoch beide}
+    \label{fig:apfelbirne}
+\end{figure}
+
+
+Die Extraktion signifikanter Merkmale ist ein wichtiger Teil von Machine Learning. Viele Eigenschaften eines Objektes sind nicht geeignet es von anderen zu unterscheiden. Im Apfel-Birnen-Beispiel würde das Merkmal ``Stiel'' nicht zu einer Unterscheidung führen.
+
+Der nächste Schritt ist das Training des Systems. Hierbei wird zwischen drei algorithmischen Ansätzen unterschieden:
+\begin{itemize}
+\item Überwachtes Lernen
+\item Unüberwachtes Lernen
+\item Bestärkendes Lernen
+\end{itemize}
+Die häufigste menschliche Lernform, ist das bestärkende Lernen, hier wird mit ``Belohnung'' und ``Bestrafung'' gearbeitet. 
+Im Machine Learning Bereich ist jedoch Überwachtes und Unüberwachtes Lernen sehr viel häufiger zu finden. Beim überwachten Lernen, werden mehrere Eingaben und Lösungen an den Algorithmus überreicht und nach einigen Durchgängen sollte er in der Lage  sein Assoziationen herzustellen. Je nach Algorithmus werden hierzu Funktionen und Gewichtungen angepasst. 
+
+Das Hidden Markov Model ist im Bereich des Unüberwachten Lernens beheimatet. Aus der Menge der Eingaben wird ein Modell erzeugt, das Vorhersagen ermöglichen soll. Mit einem Expectation-Maximization-Algorithmus (EM-Algorithmus) wird versucht, die vorliegenden Daten in Kategorien einzuteilen, sodass die Daten optimal erklärt werden. Eine Form des EM-Algorithmus kommt auch beim Hidden Markov Model zum Einsatz.
+
+Weitere Machine Learning Ansätze sind 
+\begin{itemize}
+\item Neuronale Netze
+\item Support Vector Machine
+\item K-Means
+\end{itemize} 
+
+\begin{figure}[htbp] \centering
+    \includegraphics[width=0.4\textwidth]{markov/neuralnetwork}
+    \caption{ Vereinfachte Darstellung eines neuronalen Netzwerkes mit 3 Merkmaldimensionen. }
+    \label{fig:neural}
+\end{figure}
+
+Neuronale Netze versuchen das menschliche Gehirn mit seinen Neuronen und Synapsen nachzubauen \cite{neuron}. Für jede Dimension des Merkmalsvektors sind Neuronen vorhanden, welche wiederum mit anderen Neuronen verschaltet sind. Beim Training werden die Gewichtungen der einzelnen Verschaltungen verändert.
+Abbildung \ref{fig:neural} \footnote{Quelle: \url{http://en.wikipedia.org/wiki/Artificial_neural_network\#/media/File:Artificial_neural_network.svg}} zeigt ein vereinfachtes neuronales Netz mit drei Inputs, vier weiteren Neuronen und zwei Outputs.
+
+\begin{figure}[htbp] \centering
+    \includegraphics[width=0.5\textwidth]{markov/svm}
+    \caption{ Daten lassen sich nicht immer linear trennen.}
+    \label{fig:svm}
+\end{figure}
+
+Die Support Vector Machine (Stützvektormaschine) versucht die Daten durch lineare Trennung zu Klassifizieren (Siehe Abbildung \ref{fig:svm} \footnote{Quelle: \url{http://upload.wikimedia.org/wikipedia/de/a/a0/Diskriminanzfunktion.png}})
+\cite{svm}. Es wird versucht, den Stützvektor möglichst weit von den beiden Klassen entfernt zu erstellen (Large-Margin-Classifier).
+
+
+Im Abschnitt \ref{sec:compare} werden die vorgestellten Ansätze mit dem Hidden Markov Model verglichen.
+
+
+
 \subsection{Wahrscheinlichkeitsrechnung}
 Notwendige mathematische Grundlagen
 
@@ -406,7 +462,8 @@ Notwendige mathematische Grundlagen
   %%%%%%%%%%%%%%%%%%
   %  MARKOV-KETTE  % 
   %%%%%%%%%%%%%%%%%%  
-\section{Markov Kette} \label{sec:mk}
+\section{Markov Kette} 
+\label{mainsec:mk}
 Grundlage des Hidden Markov Model war die vom russischen Mathematiker Andrej Andrejewitsch Markov 
 (1856 - 1922, siehe \cite{markov1913}) entwickelte Markov Kette. Zu Beginn des 20. Jahrhunderts beschäftigte er sich als erster mit einer statistischen Beschreibung von Zustands- und Symbolfolgen. Er führte eine statistische Analyse der Buchstabenfolge des Textes ``Eugene Onegin'' von Alexander 
 Pushkin durch.
@@ -619,28 +676,14 @@ Zum trainieren eines Hidden Markov Model existieren diverse Algorithmen. Sie unt
   %%%%%%%%%%%%
   %  RESULT  % 
   %%%%%%%%%%%%
-\section{Zusammenfassung}  \label{sec:result}
+\section{Zusammenfassung}  \label{mainsec:result}
 
 \subsection{Fazit}
 Wie schlägt sich ein HMM in der Praxis
 
 \subsection{Vergleich mit anderen Machine Learning Ansätzen}
+\label{sec:compare}
 Wie arbeiten Neuronale Netze, SVM, k-Means und Co. im Vergleich?
-
-
-% if have a single appendix:
-%\appendix[Proof of the Zonklar Equations]
-% or
-%\appendix  % for no appendix heading
-% do not use \section anymore after \appendix, only \section*
-% is possibly needed
-
-% use appendices with more than one appendix
-% then use \section to start each appendix
-% you must declare a \section before using any
-% \subsection or using \label (\appendices by itself
-% starts a section numbered zero.)
-%
 
 
 % Can use something like this to put references on a page
@@ -675,6 +718,24 @@ Wie arbeiten Neuronale Netze, SVM, k-Means und Co. im Vergleich?
 % (used to reserve space for the reference number labels box)
 \begin{thebibliography}{1}
 
+% http://www.cs.uni-potsdam.de/ml/teaching/ss10/st/HMMs.pdf
+
+\bibitem[Mar09]{marsland}
+Stephen Marsland.
+\newblock {\em Machine Learning - An Algorithmic Perspective.}
+\newblock Chapman I\& Hall, 2009.
+
+
+\bibitem[McC43]{neuron}
+W. McCulloch und W. Pitts
+\newblock{\em A logical calculus of the ideas immanent in nervous activity.}
+\newblock Bulletin of Mathematical Biophysics, 5:115-133, 1943,
+
+\bibitem[BGV92]{svm}
+Boser, B. E.; Guyon, I. M.; Vapnik, V. N.
+\newblock{ \em A training algorithm for optimal margin classifiers.}
+\newblock Proceedings of the fifth annual workshop on Computational learning theory - COLT '92. p. 144. 1992
+
 \bibitem[Mar13]{markov1913}
 A.A. Markov.
 \newblock {\em Example of a statistical investigation of the text of ``Eugene Onegin'' illustrating the dependence between samples in chain}.
@@ -690,10 +751,10 @@ Lawrence~R. Rabiner.
 \newblock {\em A tutorial on hidden markov models and selected applications in speech recognition.}
 \newblock In {\em Proceedings of the IEEE}, pages 257--286, 1989.
 
-\bibitem[Mar09]{Marsland}
-Stephen Marsland.
-\newblock {\em Machine Learning - An Algorithmic Perspective.}
-\newblock Chapman I\& Hall, 2009.
+\bibitem[Han08]{handel}
+R.v. Handel 
+\newblock{\em Hidden Markov Models} 
+\newblock{ Lecture Notes Princeton University, 2008. }
 
 \bibitem[KHW13]{stochMod}
 U.M.~Stocker K.-H.~Waldmann.
