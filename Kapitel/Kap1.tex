@@ -1,0 +1,65 @@
+\chapter{Einführung}
+
+\label{chap:intro}
+
+Das Hidden Markov Model hat im Bereich des machinellen Lernens viele Anwendungsfälle. In der vorgelegten Arbeit wird die Funktionsweise des Hidden Markov Model erklärt werden (Kapitel \ref{mainsec:hmm}). Die dafür notwendigen Grundlagen werden in den nachfolgenden Abschnitten und im Kapitel \ref{mainsec:mk} beleuchtet.
+Kapitel \ref{mainsec:result} befasst sich mit einer Einschätzung des Hidden Markov Models und dem Vergleich mit anderen Ansätzen im Machine Learning Kontext.
+
+\section{Machine Learning}
+Machine Learning befasst sich mit der modellierung des Lernvorgangs auf einem Computer \cite{marsland}. Es wird versucht ein ``künstliche'' Generierung von Wissen aus Erfahrung zu erzeugen.
+Dabei wird anhand von Beispielen ``gelernt'', sodass nicht nur die selben Daten wieder erkannt werden können, sondern auch ähnliche bzw. unbekannte Daten klassifiziert werden. Diese Transferleistung nennt man Generalisierung und ist auch beim Menschen eine wichtige Eigenschaft im Lernvorgang.
+
+So können wir Äpfel von Birnen (Siehe Abbildung \ref{fig:apfelbirne} \footnote{Quelle: \url{http://www.lifeline.de/img/abnehmen/origs76797/7656955923-w830-h830/Birne-und-Apfel.jpg}}) unterscheiden, egal, ob wir genau diese Frucht schon einmal gesehen haben. Wir entscheiden anhand gelernter Merkmale, um welche Frucht es sich vermutlich handelt. Merkmale sind bspw. Größe, Form, Farbe, Geruch etc.
+
+\begin{figure}[htbp] \centering
+    \includegraphics[width=0.25\textwidth]{Bilder/Kap1/birneapfel}
+    \caption{ Birne und Apfel unterscheiden sich durch Farbe, Form etc. - einen Stiel haben jedoch beide}
+    \label{fig:apfelbirne}
+\end{figure}
+
+
+Die Extraktion signifikanter Merkmale ist ein wichtiger Teil von Machine Learning. Viele Eigenschaften eines Objektes sind nicht geeignet es von anderen zu unterscheiden. Im Apfel-Birnen-Beispiel würde das Merkmal ``Stiel'' nicht zu einer Unterscheidung führen.
+
+Der nächste Schritt ist das Training des Systems. Hierbei wird zwischen drei algorithmischen Ansätzen unterschieden:
+\begin{itemize}
+\item Überwachtes Lernen
+\item Unüberwachtes Lernen
+\item Bestärkendes Lernen
+\end{itemize}
+Die häufigste menschliche Lernform, ist das bestärkende Lernen, hier wird mit ``Belohnung'' und ``Bestrafung'' gearbeitet. 
+Im Machine Learning Bereich ist jedoch Überwachtes und Unüberwachtes Lernen sehr viel häufiger zu finden. Beim überwachten Lernen, werden mehrere Eingaben und Lösungen an den Algorithmus überreicht und nach einigen Durchgängen sollte er in der Lage  sein Assoziationen herzustellen. Je nach Algorithmus werden hierzu Funktionen und Gewichtungen angepasst. 
+
+Das Hidden Markov Model ist im Bereich des Unüberwachten Lernens beheimatet. Aus der Menge der Eingaben wird ein Modell erzeugt, das Vorhersagen ermöglichen soll. Mit einem Expectation-Maximization-Algorithmus (EM-Algorithmus) wird versucht, die vorliegenden Daten in Kategorien einzuteilen, sodass die Daten optimal erklärt werden. Eine Form des EM-Algorithmus kommt auch beim Hidden Markov Model zum Einsatz.
+
+Weitere Machine Learning Ansätze sind 
+\begin{itemize}
+\item Neuronale Netze
+\item Support Vector Machine
+\item K-Means
+\end{itemize} 
+
+\begin{figure}[htbp] \centering
+    \includegraphics[width=0.4\textwidth]{Bilder/Kap1/neuralnetwork}
+    \caption{ Vereinfachte Darstellung eines neuronalen Netzwerkes mit 3 Merkmaldimensionen. }
+    \label{fig:neural}
+\end{figure}
+
+Neuronale Netze versuchen das menschliche Gehirn mit seinen Neuronen und Synapsen nachzubauen \cite{neuron}. Für jede Dimension des Merkmalsvektors sind Neuronen vorhanden, welche wiederum mit anderen Neuronen verschaltet sind. Beim Training werden die Gewichtungen der einzelnen Verschaltungen verändert.
+Abbildung \ref{fig:neural} \footnote{Quelle: \url{http://en.wikipedia.org/wiki/Artificial_neural_network\#/media/File:Artificial_neural_network.svg}} zeigt ein vereinfachtes neuronales Netz mit drei Inputs, vier weiteren Neuronen und zwei Outputs.
+
+\begin{figure}[htbp] \centering
+    \includegraphics[width=0.5\textwidth]{Bilder/Kap1/svm}
+    \caption{ Daten lassen sich nicht immer linear trennen.}
+    \label{fig:svm}
+\end{figure}
+
+Die Support Vector Machine (Stützvektormaschine) versucht die Daten durch lineare Trennung zu Klassifizieren (Siehe Abbildung \ref{fig:svm} \footnote{Quelle: \url{http://upload.wikimedia.org/wikipedia/de/a/a0/Diskriminanzfunktion.png}})
+\cite{svm}. Es wird versucht, den Stützvektor möglichst weit von den beiden Klassen entfernt zu erstellen (Large-Margin-Classifier).
+
+
+Im Abschnitt \ref{sec:compare} werden die vorgestellten Ansätze mit dem Hidden Markov Model verglichen.
+
+
+
+\section{Wahrscheinlichkeitsrechnung}
+Notwendige mathematische Grundlagen
