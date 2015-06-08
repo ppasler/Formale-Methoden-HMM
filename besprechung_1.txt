@@ -1,0 +1,16 @@
+listings / formeln nummerieren
+
+
+1.2 Wahrscheinlichkeit (bottom up)
+
+(bedingte) wahrscheinlichkeit
+stochastik
+
+2.1 
+markov aufteilen
+eigenschaft erklären
+grundidee: einfach(bild, beispiel) -> formal
+
+3
+grundidee: einfach(bild, beispiel) -> formal
+
