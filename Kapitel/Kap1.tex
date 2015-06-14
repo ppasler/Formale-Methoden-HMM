@@ -61,5 +61,40 @@ Im Abschnitt \ref{sec:compare} werden die vorgestellten Ansätze mit dem Hidden 
 
 
 
-\section{Wahrscheinlichkeitsrechnung}
-Notwendige mathematische Grundlagen
+\section{Mathematische Grundlagen}
+Im folgenden Abschnitt werden grundlegende mathematische Grundlagen und Definition vorgestellt.
+
+\subsection{Zeit-diskreter Prozess}
+\label{sec:timedisc}
+Ein zeit-diskreter Prozess beschreibt die Eigenschaft, dass sich die Zustände eines Systems immer im selben zeitlichen Abstand ändern (Äquidistante Zeitabstände). Beispielsweise wird jede Sekunde ein Tick ausgelöst, welcher zu einer Zustandsänderung führt. 
+Ist dies nicht der Fall, dann spricht man von einem zeit-kontinuierlichen Prozess.
+
+\subsection{Wahrscheinlichkeit}
+\label{sec:prop}
+Die Wahrscheinlichkeit (Probabilität) beschäftigt sich mit der mathematischen Untersuchung von Zufallsgeschehen. 
+
+Dafür wird von einem Zufallsexperiment ausgegangen und dieses analysiert. Alle möglichen Ergebnisse dieses Experiments werden in der Ergebnismenge $\Omega$ zusammengefasst. Meistens ist nicht das genaue Ergebnis $\omega \in \Omega$ von Interesse, sondern lediglich, ob das Ergebnis in einer bestimmten Teilmenge von $\Omega$ liegt. Weiterhin wird mit dem Ereignisraum $\Sigma$ definiert und enthält alle möglichen Ereignisse. Die Wahrscheinlichkeit wird mit $P$ bezeichnet und bewegt sich im Intervall $[0, 1]$. 
+
+Im Beispiel ``Münzwurf'' ergeben sich dann folgende Definitionen \footnote{Quelle: \url{http://de.wikipedia.org/wiki/Wahrscheinlichkeitstheorie}}.
+
+\begin{itemize}
+\item Ergebnismenge $\Omega = \{Zahl, Kopf\}$
+\item Ereignisraum $\Sigma = \{\emptyset, \{Zahl\}, \{Kopf\}, \Omega\}$
+\item Wahrscheinlichkeiten
+	\begin{itemize}
+	\item $P(\emptyset) = 0$
+	\item $P(\{Zahl\}) = 1 - P(\{Kopf\})$
+	\item $P(\Omega) = 1$
+	\end{itemize}
+\end{itemize}
+Bei den Wahrscheinlichkeiten ist $P(\emptyset) = 0$ und $P(\Omega) = 1$, da es ein Ergbenis geben muss und dieses aus $\Omega$ stammen muss. Die Wahrscheinlichkeit von $\{Zahl\}$ und $\{Kopf\}$ addieren sich zu 1. Bei einer fairen idealen Münze haben Kopf und Zahl jeweils eine Wahrscheinlichkeit von 0.5 (50\%).
+
+
+\subsection{Bedingte Wahrscheinlichkeit}
+\label{sec:condprop}
+Die bedingte Wahrscheinlichkeit beschreibt die Wahrscheinlichekit für ein das Eintreten eines Ereignisses $A$ unter der Bedingung, dass vorher ein Ereigniss $B$ eingetreten ist.
+\url{http://de.wikipedia.org/wiki/Bedingte_Wahrscheinlichkeit}
+
+
+
+

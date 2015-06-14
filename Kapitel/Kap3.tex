@@ -5,6 +5,16 @@ Das Hidden Markov Model ist ein stochastisches Modell für sequentielle Daten un
 Der amerikanischen Mathematiker Leonard E. Baum (* 1931) und andere Autoren entwickelten auf Basis der Markov Kette Ende der 
 sechziger Jahre das Hidden Markov Model \cite{baum66}. Erste Hidden Markov Model-Applikationen wurden zur Spracherkennung und später auch in der Bioinformatik zur Analyse von Nukleotid- und Proteinsequenzen eingesetzt. 
 
+\section{Beispiel}
+\textit{ Gefangener im Verlies \footnote{Quelle: \url{http://de.wikipedia.org/wiki/Hidden_Markov_Model}}} \\
+
+\begin{figure}[htbp] \centering
+    \includegraphics[width=0.4\textwidth]{Bilder/Kap3/hmm_example.png}
+    \caption{Hidden Markov Model für das Beipiel des Gefangen im Verlies}
+    \label{fig:hmm_example}
+\end{figure}
+
+Ein Gefangener im Kerkerverlies möchte das aktuelle Wetter herausfinden. Er weiß, dass auf einen sonnigen Tag zu 70 \% ein Regentag folgt und dass auf einen Regentag zu 50 \% ein Sonnentag folgt. Weiß er zusätzlich, dass die Schuhe der Wärter bei Regen zu 90 \% dreckig, bei sonnigem Wetter aber nur zu 60 \% dreckig sind, so kann er durch Beobachtung der Wärterschuhe Rückschlüsse über das Wetter ziehen (das heißt, er kann die Wahrscheinlichkeit für Regenwetter gegenüber sonnigem Wetter abschätzen). Sonne und Regen sind in diesem Fall die versteckten Zustände. Die  Emissionen bzw. die Observation die der Gefangene machen kann sind nur der Verschmutzungsgrad der Schuhe der Wärter.
 
 \section{Definition}
 Ein Hidden Markov Model erweitert eine Markov Kette um eine weiteren Zufallsprozess und ist somit ein zweistufiger stochastischer Prozess \cite[67]{mmmFink}. Hierfür wird
@@ -42,16 +52,6 @@ Der Approximationsgfehler lässt sich hierbei über eine geeignete Anzahl von \(
 b_{j}(x) = \sum_{k=1}^M c_{jk}g_{jk}(x)
 \end{equation}
 Die Anzahl der Basisverteilungen eines Gaussian Mixture Model kann hierbei für die einzelnen Zustände des HMM variieren.\\
-
-
-\section{Beispiel}
-\begin{figure}[htbp] \centering
-    \includegraphics[width=0.4\textwidth]{Bilder/Kap3/hmm_example.png}
-    \caption{Hidden Markov Model für das Beipiel des Gefangen im Verlies}
-    \label{fig:hmm_example}
-\end{figure}
-
-Abbildung \ref{fig:hmm_example} soll ein Hidden Markov Model an dem Beispiel des Gefangenen im Verlies  darstellen\footnote{Quelle: \url{http://de.wikipedia.org/wiki/Hidden_Markov_Model}}. Ein Gefangener im Kerkerverlies möchte das aktuelle Wetter herausfinden. Er weiß, dass auf einen sonnigen Tag zu 70 \% ein Regentag folgt und dass auf einen Regentag zu 50 \% ein Sonnentag folgt. Weiß er zusätzlich, dass die Schuhe der Wärter bei Regen zu 90 \% dreckig, bei sonnigem Wetter aber nur zu 60 \% dreckig sind, so kann er durch Beobachtung der Wärterschuhe Rückschlüsse über das Wetter ziehen (das heißt, er kann die Wahrscheinlichkeit für Regenwetter gegenüber sonnigem Wetter abschätzen). Sonne und Regen sind in diesem Fall die versteckten Zustände. Die  Emissionen bzw. die Observation die der Gefangene machen kann sind nur der Verschmutzungsgrad der Schuhe der Wärter.
 
 
 \section{Funktionsweise}
