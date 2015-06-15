@@ -2,7 +2,9 @@ listings / formeln nummerieren
 
 
 1.2 Wahrscheinlichkeit (bottom up)
-
+zeit-diskret
+stationär
+(kausal)
 (bedingte) wahrscheinlichkeit
 stochastik
 
