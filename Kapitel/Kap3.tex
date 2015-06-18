@@ -157,7 +157,7 @@ optimalen Vorgängerzustand speichert.
 
 \subsection{Training}
 \label{sec:train}
-Gegeben sei eine Observationsfolge $Y$, aus dem ein passendes Hidden Markov Model erzeugt werden soll. 
+Gegeben sei eine Observationsfolge $o$, aus dem ein passendes Hidden Markov Model erzeugt werden soll. 
 
 Je nach Problemstellung, müssen unterschiedliche Modelle eines HMM's gewählt werden. Es ist bisher kein Verfahren bekannt das aufgrund einer Stichprobe ein optimales Modell generieren kann. Die Anzahl der Zustände, die Wahl der Emissionsverteilungen, sowie deren initiale Parameterwerte müssen nach eigenen Erfahrungen gewählt werden. Wenn dies geschehen ist kann das Modell in einem iterativen Prozess trainiert werden. Hierbei werden die Parameter einer Wachstumstransformation unterworfen. Ziel ist es das die Modellparameter so verändert werden, dass die Bewertung des veränderten Models besser, als die des Ausgangsmodels ist.
 
