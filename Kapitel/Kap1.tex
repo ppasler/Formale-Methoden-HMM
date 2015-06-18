@@ -3,7 +3,7 @@
 \label{chap:intro}
 
 Das Hidden Markov Model hat im Bereich des machinellen Lernens viele Anwendungsfälle. In der vorgelegten Arbeit wird die Funktionsweise des Hidden Markov Model erklärt werden (Kapitel \ref{mainsec:hmm}). Die dafür notwendigen Grundlagen werden in den nachfolgenden Abschnitten und im Kapitel \ref{mainsec:mk} beleuchtet.
-Kapitel \ref{mainsec:result} befasst sich mit einer Einschätzung des Hidden Markov Models und dem Vergleich mit anderen Ansätzen im Machine Learning Kontext.
+Kapitel \ref{mainsec:comp} zeigt den Vergleich mit anderen Ansätzen im Machine Learning Kontext. Abschließend wird im letzten Kapitel (\ref{mainsec:result}) über eine Einschätzung des Hidden Markov Models disskutiert.
 
 \section{Machine Learning}
 Machine Learning befasst sich mit der modellierung des Lernvorgangs auf einem Computer \cite{marsland}. Es wird versucht ein ``künstliche'' Generierung von Wissen aus Erfahrung zu erzeugen.
@@ -29,7 +29,8 @@ Der nächste Schritt ist das Training des Systems. Hierbei wird zwischen drei al
 Die häufigste menschliche Lernform, ist das bestärkende Lernen, hier wird mit ``Belohnung'' und ``Bestrafung'' gearbeitet. 
 Im Machine Learning Bereich ist jedoch Überwachtes und Unüberwachtes Lernen sehr viel häufiger zu finden. Beim überwachten Lernen, werden mehrere Eingaben und Lösungen an den Algorithmus überreicht und nach einigen Durchgängen sollte er in der Lage  sein Assoziationen herzustellen. Je nach Algorithmus werden hierzu Funktionen und Gewichtungen angepasst. 
 
-Das Hidden Markov Model ist im Bereich des Unüberwachten Lernens beheimatet. Aus der Menge der Eingaben wird ein Modell erzeugt, das Vorhersagen ermöglichen soll. Mit einem Expectation-Maximization-Algorithmus (EM-Algorithmus) wird versucht, die vorliegenden Daten in Kategorien einzuteilen, sodass die Daten optimal erklärt werden. Eine Form des EM-Algorithmus kommt auch beim Hidden Markov Model zum Einsatz.
+Das Hidden Markov Model ist im Bereich des ``Unüberwachten Lernens'' beheimatet. Aus der Menge der Eingaben wird ein Modell erzeugt, das Vorhersagen ermöglichen soll. Mit einem Expectation-Maximization-Algorithmus (EM-Algorithmus \cite{emalgo}) wird versucht, die vorliegenden Daten in Kategorien einzuteilen, sodass die Daten optimal erklärt werden. Hierbei wird versucht in einem zweistufigen Verfahren (Expectation und Maximization), das Modell besser zu machen. 
+Eine Form des EM-Algorithmus kommt auch beim Hidden Markov Model zum Einsatz.
 
 Weitere Machine Learning Ansätze sind 
 \begin{itemize}
@@ -49,15 +50,23 @@ Abbildung \ref{fig:neural} \footnote{Quelle: \url{http://en.wikipedia.org/wiki/A
 
 \begin{figure}[htbp] \centering
     \includegraphics[width=0.5\textwidth]{Bilder/Kap1/svm}
-    \caption{ Daten lassen sich nicht immer linear trennen.}
+    \caption{ Support Vector Machine: Daten lassen sich nicht immer linear trennen.}
     \label{fig:svm}
 \end{figure}
 
 Die Support Vector Machine (Stützvektormaschine) versucht die Daten durch lineare Trennung zu Klassifizieren (Siehe Abbildung \ref{fig:svm} \footnote{Quelle: \url{http://upload.wikimedia.org/wikipedia/de/a/a0/Diskriminanzfunktion.png}})
 \cite{svm}. Es wird versucht, den Stützvektor möglichst weit von den beiden Klassen entfernt zu erstellen (Large-Margin-Classifier).
 
+\begin{figure}[htbp] \centering
+    \includegraphics[width=0.8\textwidth]{Bilder/Kap1/kmeans}
+    \caption{ Vereinfachter Ablauf einer Iteration des k-Means Algorithmus. 1) Clusterzentren zufällig wählen. 2) Datenpunkte den  Clustern zuordnen. 3) Clusterzentren verschieben. 4) Datenpunkt den neuen Clustern zuordnen.}
+    \label{fig:kmeans}
+\end{figure}
 
-Im Abschnitt \ref{sec:compare} werden die vorgestellten Ansätze mit dem Hidden Markov Model verglichen.
+Der k-Means Ansatz versucht die gegebenen Daten zu gruppieren bzw. zu clustern und geht auf den polnischen Mathematiker Hugo Steinhaus zurück \cite{kmeans}. Zu beginn wird die Anzahl der Cluster $k$ definiert und diese per Zufall im Kooridnatensystem verteilt (Siehe Abbildung \ref{fig:kmeans}). Nun wird in jeder Iteration versucht, das Zentrum der Cluster zu verbessern und näher an die Daten zu bringen. k-Means ist ebenfalls ein EM-Ansatz.
+
+
+Im Abschnitt \ref{mainsec:comp} werden die vorgestellten Ansätze Neuronale Netze (\ref{sec:neuron}), SVM (\ref{sec:svm}) und k-Means (\ref{sec:kmeans}) mit dem Hidden Markov Model verglichen.
 
 
 

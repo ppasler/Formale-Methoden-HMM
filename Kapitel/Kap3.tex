@@ -28,15 +28,11 @@ Abbildung \ref{fig:hmm_graph} zeigt die möglichen Zustände $x$, die Übergangs
 
 Ein Gefangener im Kerkerverlies möchte das aktuelle Wetter herausfinden. Er weiß, dass auf einen sonnigen Tag zu 70 \% ein Regentag folgt und dass auf einen Regentag zu 50 \% ein Sonnentag folgt. Weiß er zusätzlich, dass die Schuhe der Wärter bei Regen zu 90 \% dreckig, bei sonnigem Wetter aber nur zu 60 \% dreckig sind, so kann er durch Beobachtung der Wärterschuhe Rückschlüsse über das Wetter ziehen (das heißt, er kann die Wahrscheinlichkeit für Regenwetter gegenüber sonnigem Wetter abschätzen). 
 
-Sonne und Regen sind in diesem Fall die versteckten Zustände $x$. Die  Emissionen bzw. die Observation die der Gefangene machen kann sind nur der Verschmutzungsgrad der Schuhe der Wärter $y$.
+Sonne und Regen sind in diesem Fall die versteckten Zustände $x$. Die  Emissionen bzw. die Observation die der Gefangene machen kann sind nur der Verschmutzungsgrad der Schuhe der Wärter $y$. Dabei ist es völlig egal, welches Wetter vor 2 Tage geherrscht hat (Wegen der Markov-Eigenschaft, siehe \ref{sec:mkdef}).
 
 \textit{ Spracherkennung } \\
-In der automatischen Spracherkennung entsprechen bspw. die gesprochenen Laute  (Phoneme) den versteckten Zuständen und die tatsächlich hörbaren Töne den Emissionen eines Hidden Markov Models.
-%\footnote{Quelle: \url{http://www.fh-wedel.de/~si/seminare/ss01/Ausarbeitung/a.sprache/gdlgsprerk34.htm\#5}}
-%\url{http://www.dfki.de/~kipp/seminar/writeups/Sebastian_ivc.pdf}
-%Bei der Spracherkennung wird angenommen, dass sich Sprache aus eine Folgen von Phonemen (gesprochenen Laute) zusammensetzt. Diese werden als Zustände Spracherzeugungsprozess angesehen.
-
-
+In der automatischen Spracherkennung entsprechen bspw. die gesprochenen Laute  (Phoneme) den versteckten Zuständen und die Silben bzw. Worte den Emissionen eines Hidden Markov Models (Siehe \cite{speech}). 
+Das Model hat somit die Aufgabe, aus einer Sequenz von Lauten auf eine Sequenz von Silben oder Wörtern zu schließen.
 
 
 

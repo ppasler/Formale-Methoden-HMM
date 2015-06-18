@@ -1,8 +1,21 @@
-\chapter{Zusammenfassung}  \label{mainsec:result}
+\chapter{Vergleich mit anderen Machine Learning Ansätzen}  \label{mainsec:comp}
 
-\section{Fazit}
-Wie schlägt sich ein HMM in der Praxis
+\section{Neuronale Netze} \label{sec:neuron}
+Das Neuronale Netz mit allen seinen Ablegern, sind heute wieder eine wichtige Größe im Machine Learning Bereich, nachdem sie Ende der 1960er Jahre wegen einiger Probleme nicht mehr fokusiert wurden. So konnte das Ursprünglich Neuronale Netz kein XOR abbilden konnte und Probleme in der linearen Separierbarkeit hatte.
 
-\section{Vergleich mit anderen Machine Learning Ansätzen}
-\label{sec:compare}
-Wie arbeiten Neuronale Netze, SVM, k-Means und Co. im Vergleich?
+Rekurrente (tief vorwärtsgerichtete) Neuronale Netze können dank schnellerer CPU oder gar GPU-Nutzung, immer bessere Ergebnisse mit kurzer Rechenzeit liefern. 
+Neuronale Netz benötigen sehr viele Daten und Rechenzeit für das Training. Weiterhin können sie nicht mit sequentiellen Daten umgehen, was eine Datenvorverarbeitung nötig macht. Dies gilt ebenso für beiden folgenden Ansätze.
+
+
+\section{Support Vector Machine} \label{sec:svm}
+Support Vector Machines eigenen sich für die Erkennung von Handschriften, zur klassifizierung von Bildern oder in der Bioinformatik zur klassifizierung von Proteinen.
+
+Probleme ergeben sich, wenn sich die Daten nicht linear Separieren lassen. Hier wendet die SVM den sog. Kernel-Trick an. Dieser überfürht die Daten in einen höher-dimensionalen Raum, sodass sie wieder ``eindeutig'' Trennbar sind (Ausreißer werden vernachlässigt).
+
+
+\section{k-Means} \label{sec:kmeans}
+Der k-Means Algorithmus wird häufig in der Bildverarbeitung zur Segementierung eingesetzt. Oftmals wird reicht die euklidische Distanz nicht aus und es müssen weitere Merkmale hinzugezogen werden.
+
+Beispielsweise nutzt OpenCV eine Form des k-Means-Algorithmus, um Vordergrund von Hintergrund zu trennen oder Objekte zu erkennen.
+
+Der k-Means-Algorithmus findet aber nicht unbedingt die beste ``globale'' Lösung, sondern findet je nach Wahl der Startpunkte nur lokale Lösungen. Weiterhin wird im Vorfeld der Anzahl der Cluster bestimmt, welche das  Ergebnis stark beeinflussen kann.
