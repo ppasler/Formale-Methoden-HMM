@@ -1,4 +1,8 @@
 \chapter{Vergleich mit anderen Machine Learning Ansätzen}  \label{mainsec:comp}
+Es exisiterne zahllose Ansätze, um maschinelles Lernen abzubilden. Jedes Verfahren hat seinen Ursprung und wurde oft für einen speziellen Anwendungsfall entwickelt. Für jedes Verfahren gibt es zudem wieder verschiedene Erweiterungen, Algorithmen und Implementierungen, die spezielle Probleme lösen. Darum fällt es schwer zu sagen, was der beste Ansatz ist - ohne die genauen Anforderungen zu kennen.
+
+Dennoch werden in den folgenden Abschnitten kurze Gegenüberstellungen, sowie Vor- und Nachteile vorgestellt.
+
 
 \section{Neuronale Netze} \label{sec:neuron}
 Das Neuronale Netz mit allen seinen Ablegern, sind heute wieder eine wichtige Größe im Machine Learning Bereich, nachdem sie Ende der 1960er Jahre wegen einiger Probleme nicht mehr fokusiert wurden. So konnte das Ursprünglich Neuronale Netz kein XOR abbilden konnte und Probleme in der linearen Separierbarkeit hatte. Zudem ist nicht ganz klar, was in einem  neuronalen Netz vorgeht und was die einzelnen Parameter im Detail bedeuten \cite[167]{marsland} - dennoch funktionieren sie. Dies ist im Hidden Markov Model anders, da es sich bei den Parametern, nicht um abstrakte Gewichte, sondern um Wahrscheinlichkeiten handelt.
@@ -23,4 +27,6 @@ Der k-Means Algorithmus wird häufig in der Bildverarbeitung zur Segementierung 
 
 Der k-Means-Algorithmus findet aber nicht unbedingt die beste ``globale'' Lösung, sondern findet je nach Wahl der Startpunkte nur lokale Lösungen. Weiterhin wird im Vorfeld der Anzahl der Cluster bestimmt, welche das  Ergebnis stark beeinflussen kann.
 
-Der k-Means Algorithmus ist ein Vertreter des unbeobachteten Lernens, wohin gegen das Hidden Markov Model und die beiden vorherigen Ansätze überwachtes Lernen umsetzen. Diese Eigenschaft wird in einem hybriden schreiberunabhängigen Schrifterkennungssystem genutzt, bei dem der k-Means Algorithmus das Clustering im Vorfeld übernimmt und das HMM für die Erkennung \cite{hmmkm}. 
+Der k-Means Algorithmus ist, wie das Hidden Markov Model, ein Vertreter des unüberwachten Lernens - wohin gegen die beiden vorherigen Ansätze überwachtes Lernen umsetzen. 
+
+Auch für k-Means und das HMM existieren gemeinschaftliche Anwendungen, bspw. werden sie in einem hybriden schreiberunabhängigen Schrifterkennungssystem genutzt, bei dem der k-Means Algorithmus das Clustering im Vorfeld übernimmt und das HMM für die Erkennung zuständig ist \cite{hmmkm}. 

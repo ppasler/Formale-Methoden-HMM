@@ -2,8 +2,8 @@
 
 \label{chap:intro}
 
-Das Hidden Markov Model hat im Bereich des machinellen Lernens viele Anwendungsfälle. In der vorgelegten Arbeit wird die Funktionsweise des Hidden Markov Model erklärt werden (Kapitel \ref{mainsec:hmm}). Die dafür notwendigen Grundlagen werden in den nachfolgenden Abschnitten und im Kapitel \ref{mainsec:mk} beleuchtet.
-Kapitel \ref{mainsec:comp} zeigt den Vergleich mit anderen Ansätzen im Machine Learning Kontext. Abschließend wird im letzten Kapitel (\ref{mainsec:result}) über eine Einschätzung des Hidden Markov Models disskutiert.
+Das Hidden Markov Model hat im Bereich des machinellen Lernens viele Anwendungsfälle. In der vorgelegten Arbeit werden diese und die  Funktionsweise des Hidden Markov Model vorgestellt (Kapitel \ref{mainsec:hmm}). Die dafür notwendigen Grundlagen werden in den nachfolgenden Abschnitten und im Kapitel \ref{mainsec:mk} beleuchtet.
+Kapitel \ref{mainsec:comp} zeigt den Vergleich mit anderen Ansätzen im Machine Learning Kontext. Ein abschließendes Fazit wird im letzten Kapitel (\ref{mainsec:result}) gezogen.
 
 \section{Machine Learning}
 Machine Learning befasst sich mit der modellierung des Lernvorgangs auf einem Computer \cite{marsland}. Es wird versucht ein ``künstliche'' Generierung von Wissen aus Erfahrung zu erzeugen.
@@ -18,7 +18,7 @@ So können wir Äpfel von Birnen (Siehe Abbildung \ref{fig:apfelbirne} \footnote
 \end{figure}
 
 
-Die Extraktion signifikanter Merkmale ist ein wichtiger Teil von Machine Learning. Viele Eigenschaften eines Objektes sind nicht geeignet es von anderen zu unterscheiden. Im Apfel-Birnen-Beispiel würde das Merkmal ``Stiel'' nicht zu einer Unterscheidung führen.
+Die Extraktion signifikanter Merkmale ist ein wichtiger Teil von Machine Learning. Viele Eigenschaften eines Objektes sind nicht geeignet, es von anderen zu unterscheiden. Im Apfel-Birnen Beispiel würde das Merkmal ``Stiel'' nicht zu einer Unterscheidung führen.
 
 Der nächste Schritt ist das Training des Systems. Hierbei wird zwischen drei algorithmischen Ansätzen unterschieden:
 \begin{itemize}
@@ -27,12 +27,11 @@ Der nächste Schritt ist das Training des Systems. Hierbei wird zwischen drei al
 \item Bestärkendes Lernen
 \end{itemize}
 Die häufigste menschliche Lernform, ist das bestärkende Lernen, hier wird mit ``Belohnung'' und ``Bestrafung'' gearbeitet. 
-Im Machine Learning Bereich ist jedoch Überwachtes und Unüberwachtes Lernen sehr viel häufiger zu finden. Beim überwachten Lernen, werden mehrere Eingaben und Lösungen an den Algorithmus überreicht und nach einigen Durchgängen sollte er in der Lage  sein Assoziationen herzustellen. Je nach Algorithmus werden hierzu Funktionen und Gewichtungen angepasst. 
+Im Machine Learning Bereich ist jedoch Überwachtes und Unüberwachtes Lernen sehr viel häufiger zu finden. Beim überwachten Lernen, werden mehrere Eingaben und Lösungen an den Algorithmus überreicht und nach einigen Durchgängen, sollte er in der Lage  sein Assoziationen herzustellen. Je nach Algorithmus werden hierzu Funktionen und Gewichtungen angepasst. Das Hidden Markov Model ist an ehesten im Bereich des ``Unüberwachten Lernens'' beheimatet. 
 
-Das Hidden Markov Model ist im Bereich des ``Unüberwachten Lernens'' beheimatet. Aus der Menge der Eingaben wird ein Modell erzeugt, das Vorhersagen ermöglichen soll. Mit einem Expectation-Maximization-Algorithmus (EM-Algorithmus \cite{emalgo}) wird versucht, die vorliegenden Daten in Kategorien einzuteilen, sodass die Daten optimal erklärt werden. Hierbei wird versucht in einem zweistufigen Verfahren (Expectation und Maximization), das Modell besser zu machen. 
-Eine Form des EM-Algorithmus kommt auch beim Hidden Markov Model zum Einsatz.
+Aus der Menge der Eingaben wird ein Modell erzeugt, das Vorhersagen ermöglichen soll. Dazu wird eine Form des Expectation-Maximization-Algorithmus (EM-Algorithmus \cite{emalgo}) genutzt. Bei einem EM-Algorithmus wird versucht, die vorliegenden Daten in Kategorien einzuteilen, sodass die Daten optimal erklärt werden. Hierbei wird versucht in einem zweistufigen Verfahren (Expectation und Maximization), das Modell besser zu machen. 
 
-Weitere Machine Learning Ansätze sind 
+Weitere Machine Learning Ansätze sind (nicht vollständig) 
 \begin{itemize}
 \item Neuronale Netze
 \item Support Vector Machine
