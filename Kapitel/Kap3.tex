@@ -55,12 +55,12 @@ Das Hidden Markov Model wird in \ref{equ:defhmm} definiert \cite[68]{mmmFink}.
      \item Alphabeth der Emissionen \\
            \( Y = \{ y | 1 <= y <= M \} \)
      \item Matrix der Zustandsübergangs-wahrscheinlichkeiten \\
-           \( A = \{ a_{ij} | a_{ij} = P(S_t = j | S_{t-1} = i) \} \)
+           \( A = \{ a_{ij} | a_{ij} = P(X_t = j | X_{t-1} = i) \} \)
      \item Matrix der Emissionsverteilung \\
-           \( B = \{ b_{jk} | b_{jk} = P(O_t = o_k | S_t = j) \} \) bzw. \\
-           \( B = \{ b_{j}(x) | b_{j}(x) = p(x|S_t = j) \} \)
+           \( B = \{ b_{jk} | b_{jk} = P(Y_t = o_k | X_t = j) \} \) bzw. \\
+           \( B = \{ b_{j}(x) | b_{j}(x) = p(x|X_t = j) \} \)
      \item Vektor von Zustandsstartwahrscheinlichkeiten \\
-           \( \pi = \{ \pi_i | \pi_i = P(S_1 = i) \} \) 
+           \( \pi = \{ \pi_i | \pi_i = P(X_1 = i) \} \) 
 \end{itemize}
 
 
