@@ -6,7 +6,7 @@ Das Hidden Markov Model ist ein stochastisches Modell für sequentielle Daten un
 Der amerikanischen Mathematiker Leonard E. Baum (* 1931) und andere Autoren entwickelten auf Basis der Markov Kette Ende der 
 sechziger Jahre das Hidden Markov Model \cite{baum66}. Erste Hidden Markov Model-Applikationen wurden zur Spracherkennung und später auch in der Bioinformatik zur Analyse von Nukleotid- und Proteinsequenzen eingesetzt. 
 
-Mit dem Hidden Markov Model können Erkentnisse über ein System gewonnen werden, ohne genau das genau Aussehen bzw. die Zustände (``Hidden states'') sehen zu können. Es wird lediglich eine Wahrschinlichkeit anhand von Beobachtungen (Emissionen) berechnet. 
+Mit dem Hidden Markov Model können Erkentnisse über ein System gewonnen werden, ohne genau das Aussehen bzw. die Zustände (``Hidden states'') sehen zu können. Es wird lediglich eine Wahrschinlichkeit anhand von Beobachtungen (Emissionen) berechnet. 
 
 Abbildung \ref{fig:hmm_graph} zeigt die möglichen Zustände $x$, die Übergangswahrscheinlichkeiten $a$, sowie die möglichen Beobachtungen $y$ und die Emissionswahrscheinlichkeiten $b$. $x$ und $a$ sind Teil einer gewöhnlichen Markovkette (Siehe Abschnitt \ref{mainsec:mk}). Beobachtbar (sichtbar) sind jedoch nur die Emissionen  $y$. Mit dem Wissen der Emissionswahrscheinlichkeiten $b$ lassen sich trotzdem Rückschlüsse auf die Zustände $x$ ziehen.
 
@@ -33,6 +33,7 @@ Sonne und Regen sind in diesem Fall die versteckten Zustände $x$. Die  Emission
 \textit{ Spracherkennung } \\
 In der automatischen Spracherkennung entsprechen bspw. die gesprochenen Laute  (Phoneme) den versteckten Zuständen und die Silben bzw. Worte den Emissionen eines Hidden Markov Models (Siehe \cite{speech}). 
 Das Model hat somit die Aufgabe, aus einer Sequenz von Lauten auf eine Sequenz von Silben oder Wörtern zu schließen.
+Das Hidden Markov Model passt sehr gut zur Vorstellung von Sprachsignalen als Abfolge einzelner Ereignisse.
 
 
 
